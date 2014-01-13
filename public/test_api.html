@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test API</title>
+  <meta charset="UTF-8" />
+  <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript">google.load("jquery", "1.2.6");</script>
+</head>
+<body>
+
+<h1>Test API</h1>
+
+<h2>認証</h2>
+<input type="text" id="txt_account" value="Tarou">
+<input type="text" id="txt_password" value="tarou001">
+<input type="button" id="btn_login" value="ログイン">
+
+<h2>アイテム取得</h2>
+<input type="button" id="btn_item_all" value="一括">
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$("#btn_login").click(
+		// function(){
+		// 	$.ajax({
+		// 		type: "GET",
+		// 		dataType: 'jsonp',
+		// 		url: 'http://localhost:3000/api/sign_in',
+		// 		// async: false,
+		// 		data: {},
+		// 		success: function(res, data) {
+		// 			alert('X-CSRF-Token: '+ res.getResponseHeader('X-CSRF-Token'));
+		// 			alert(data);
+		// 		}
+		// 	});
+		// }
+		function(){
+			$.ajax({
+				// type: "GET",
+				// contentType: "application/x-www-form-urlencoded",
+				type: 'GET',
+				dataType: 'jsonp',
+				cache: false,
+				// url: 'http://localhost:3000/api/sign_in',
+				url: 'http://localhost:3000/api/sign_in',
+				// async: false,
+				data: {},
+				// data: {
+				// 	user : {
+				// 		"account" : "Tarou",
+				// 		"password" : "tarou001"
+				// 	}
+				// },
+				success: function(data) {
+					// alert('X-CSRF-Token: '+ res.getResponseHeader('X-CSRF-Token'));
+					// alert(data);
+				}
+			});
+		}
+	);
+
+	$("#btn_item_all").click(
+		function(){
+			$.ajax({
+				type: 'GET',
+				// dataType: 'json',
+				url: 'http://localhost:3000/api/items/all',
+				async: false,
+				data: {},
+				success: function(data) {
+					alert(data);
+				}
+			});
+		}
+	);
+
+});
+
+</script>
+</body>
+</html>
