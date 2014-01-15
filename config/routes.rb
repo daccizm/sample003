@@ -4,8 +4,8 @@ Sample003::Application.routes.draw do
 
   namespace :api, defaults: { format: "json" } do
     devise_scope :user do
-      get  "sign_in" => 'sessions#new'
-      post "sign_in" => 'sessions#create'
+      post   "sign_in"  => 'sessions#create'
+      delete "sign_out" => 'sessions#destroy'
     end
     
     get "items/all"

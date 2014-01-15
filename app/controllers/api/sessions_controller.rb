@@ -1,40 +1,42 @@
 class Api::SessionsController < Devise::SessionsController
 
-  # protect_from_forgery with: :null_session
-
-  before_action :ensure_params_exist, only: [:create]
+  before_action :ensure_params_exist
   skip_before_action :verify_authenticity_token
 
-  after_action :set_csrf_header, only: [:new, :create]
+  after_action :set_csrf_header, only: [:create]
 
   respond_to :json
 
-  def new
-    self.resource = resource_class.new(sign_in_params)
-    clean_up_passwords(resource)
-    render json: {
-      success: true,
-      required_sign_in: resource.blank?
-    }, status: 200
-  end
-
   def create
-  	build_resource
   	resource = User.find_for_database_authentication(
   		account: params[:user][:account]
   	)
   	return invalid_login_attempt unless resource
 
-  	if resource.valid_password?(params[:user][:password])
-  		sign_in( resource_name, resource )
-  		render json: {
-  			success: true,
-  			auth_token: resource.authentication_token,
-  			account: resource.account
-  		}
-  		return
-  	end
-  	invalid_login_attempt
+  	invalid_login_attempt unless resource.valid_password?(params[:user][:password])
+
+    resource.signed_in_authentication_token
+		sign_in( resource_name, resource )
+
+		return render json: {
+			success:    true,
+			auth_token: resource.authentication_token,
+			account:    resource.account
+		}
+
+  end
+
+  def destroy
+    resource = User.find_for_database_authentication(
+      account: params[:user][:account]
+    )
+
+    resource.signed_out_authentication_token!
+    sign_out(resource_name)
+
+    return render json: {
+      success: true
+    }
   end
 
 
@@ -49,7 +51,6 @@ class Api::SessionsController < Devise::SessionsController
   end
 
   def invalid_login_attempt
-  	warden.custom_failure!
   	render json: {
   		success: false,
   		message: "Error with your login or password"
