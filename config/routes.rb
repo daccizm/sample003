@@ -1,4 +1,6 @@
 Sample003::Application.routes.draw do
+  resources :pictures
+
   get "top/index"
   devise_for :users
 

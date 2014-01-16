@@ -157,6 +157,7 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    rubyzip (1.1.0)
     sass (3.2.13)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -218,8 +219,9 @@ DEPENDENCIES
   jquery-rails
   rails (= 4.0.2)
   rb-fsevent
-  rmagick
+  rmagick (~> 2.13.2)
   rspec-rails
+  rubyzip (~> 1.1.0)
   sass-rails (~> 4.0.0)
   sdoc
   spring
