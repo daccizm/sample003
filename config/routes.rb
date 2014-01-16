@@ -7,6 +7,8 @@ Sample003::Application.routes.draw do
       post   "sign_in"  => 'sessions#create'
       delete "sign_out" => 'sessions#destroy'
     end
+
+    post "pictures/upload"
     
     get "items/all"
     post "items/all"

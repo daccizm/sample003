@@ -50,6 +50,10 @@ end
 
 gem 'devise'
 
+gem 'carrierwave', '~> 0.9.0'
+
+gem 'rmagick', '~> 2.13.2'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

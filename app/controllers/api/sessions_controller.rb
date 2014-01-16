@@ -2,7 +2,9 @@ class Api::SessionsController < Devise::SessionsController
 
   before_action :ensure_params_exist
   skip_before_action :verify_authenticity_token
+  skip_before_action :authenticate_user_from_token!
 
+  # CSRF対策は保留
   after_action :set_csrf_header, only: [:create]
 
   respond_to :json
@@ -57,6 +59,7 @@ class Api::SessionsController < Devise::SessionsController
   	}, status: 401
   end
 
+  # CSRF対策は保留
   def set_csrf_header
   	response.headers['X-CSRF-Token'] = form_authenticity_token
   end
