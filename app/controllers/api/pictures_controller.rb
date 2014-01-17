@@ -12,7 +12,6 @@ class Api::PicturesController < ApplicationController
     begin
       picture.store_files params[:file]
     rescue Exception => e
-      puts e.inspect
       return render_error "ディレクトリへのアップロードに失敗しました。"
     end
 
@@ -26,7 +25,6 @@ class Api::PicturesController < ApplicationController
                :message => "正常に登録しました。"
              }
     else
-      puts e.inspect
       render_error "更新処理で失敗しました。"
     end
   end

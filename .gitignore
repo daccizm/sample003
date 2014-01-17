@@ -8,6 +8,7 @@
 /.bundle
 /vendor/bundle
 /public/assets/*
+/public/uploads
 /db/schema.rb
 
 # Ignore the default SQLite database.

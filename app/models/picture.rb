@@ -1,14 +1,15 @@
 class Picture < ActiveRecord::Base
-  mount_uploader :image, ImageUploader
 
   before_save :set_thumbnail
+
+  mount_uploader :image, ImageUploader
 
   def store_files zip_file
     return unless zip_file
     path = dir_path
     Zip::File.open( zip_file.tempfile.path ) do |zip|
       zip.each do |entry|
-        zip.extract( entry, path + entry.to_s ) { true }
+        zip.extract( entry, path + "/" + entry.to_s ) { true }
       end
     end
   end
