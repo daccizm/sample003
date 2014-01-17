@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
+gem 'rb-readline'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
@@ -26,6 +28,17 @@ gem 'jquery-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+
+  # gem 'hirb'
+  # gem 'hirb-unicode'
+
+  # gem 'awesome_print'
+end
 
 group :development do
   gem 'better_errors'
@@ -54,7 +67,7 @@ gem 'carrierwave', '~> 0.9.0'
 
 gem 'rmagick', '~> 2.13.2'
 
-gem 'rubyzip', '~> 1.1.0'
+gem 'rubyzip', '~> 1.1.0', :require => 'zip/filesystem'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
