@@ -11,6 +11,7 @@ Sample003::Application.routes.draw do
     end
 
     post "pictures/upload"
+    get  "pictures/search"
     
     get "items/all"
     post "items/all"

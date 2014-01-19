@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
          :trackable,
          :validatable
 
+  has_many :pictures
+
   def signed_in_authentication_token
   	self.authentication_token = generate_authentication_token
   end

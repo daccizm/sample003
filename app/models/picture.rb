@@ -1,5 +1,7 @@
 class Picture < ActiveRecord::Base
 
+  scope :filter_upid, lambda{ |upid| where(upid: upid) if upid.present? }
+
   before_save :set_thumbnail
 
   mount_uploader :image, ImageUploader

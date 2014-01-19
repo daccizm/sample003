@@ -29,6 +29,17 @@ class Api::PicturesController < ApplicationController
     end
   end
 
+  # GET
+  # 画像情報取得
+  def search
+    result   = []
+    pictures = current_user.pictures.filter_upid(params[:upid]).select(:upid, :description).each do |picture|
+      result << { upid: picture.upid, description: picture.description }
+    end
+    render :status => 200,
+           :json => { :pictures => result }
+  end
+
 
   private
 
