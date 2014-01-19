@@ -33,6 +33,9 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass-rails (3.0.3.0)
+      railties (>= 3.1.0)
+      sass-rails (>= 3.1.0)
     builder (3.1.4)
     byebug (2.5.0)
       columnize (~> 0.3.6)
@@ -222,11 +225,12 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bootstrap-sass-rails (~> 3.0.3.0)
   capybara
   carrierwave (~> 0.9.0)
   coffee-rails (~> 4.0.0)
   database_cleaner
-  devise
+  devise (~> 3.2.2)
   factory_girl_rails
   guard-rspec
   guard-spring

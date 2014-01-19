@@ -1,8 +1,10 @@
 Sample003::Application.routes.draw do
-  resources :pictures
 
-  get "top/index"
   devise_for :users
+
+  root to: 'top#index'
+
+  resources :pictures
 
   namespace :api, defaults: { format: "json" } do
     devise_scope :user do
