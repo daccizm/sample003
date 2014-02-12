@@ -26,6 +26,7 @@
         <li><a href="#">Dummy Link</a></li>
         <li><a href="#">Dummy Link</a></li>
         <% if user_signed_in? %>
+          <li><p><%= current_user.account %></p></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
         <% end %>
       </ul>

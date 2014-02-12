@@ -65,7 +65,7 @@ gem 'devise', '~> 3.2.2'
 
 gem 'carrierwave', '~> 0.9.0'
 
-gem 'rmagick', '~> 2.13.2'
+# gem 'rmagick', '~> 2.13.2'
 
 gem 'rubyzip', '~> 1.1.0', :require => 'zip/filesystem'
 

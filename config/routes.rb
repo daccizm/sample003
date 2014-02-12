@@ -4,6 +4,8 @@ Sample003::Application.routes.draw do
 
   root to: 'top#index'
 
+  match "guest/:uuid" => "guest#index", via: [:get]
+
   resources :pictures
 
   namespace :api, defaults: { format: "json" } do

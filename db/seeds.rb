@@ -9,4 +9,5 @@
 user = User.create([
 	{ account: 'Tarou', password: 'tarou001', password_confirmation: 'tarou001', email: 'tarou@gmail.com'},
 	{ account: 'Hanako', password: 'hanako001', password_confirmation: 'hanako001', email: 'hanako@gmail.com'},
+	{ account: 'guest', password: 'guest_password', password_confirmation: 'guest_password', email: 'guest@gmail.com'},
 ])
